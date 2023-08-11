@@ -1,3 +1,4 @@
+import { ShapeSizeEnum, ShapeTypeEnum } from '@prisma/client';
 import { Circle, Rect, Star } from 'react-konva';
 
 const RenderShape = ({
@@ -7,16 +8,21 @@ const RenderShape = ({
   x,
   y,
 }: {
-  type: string;
+  type: ShapeTypeEnum;
   color: string;
-  size: string;
-  x: string;
-  y: string;
+  size: ShapeSizeEnum;
+  x: string | number;
+  y: string | number;
 }) => {
-  const size = sizeLabel === 'small' ? 50 : sizeLabel === 'medium' ? 100 : 150;
+  const size =
+    sizeLabel === ShapeSizeEnum.SMALL
+      ? 50
+      : sizeLabel === ShapeSizeEnum.MEDIUM
+      ? 100
+      : 150;
 
   switch (type) {
-    case 'star':
+    case ShapeTypeEnum.STAR:
       return (
         <Star
           x={Number(x)}
@@ -28,7 +34,7 @@ const RenderShape = ({
           numPoints={5}
         />
       );
-    case 'circle':
+    case ShapeTypeEnum.CIRCLE:
       return (
         <Circle
           x={Number(x)}
@@ -38,7 +44,7 @@ const RenderShape = ({
           radius={Number(size) / 2}
         />
       );
-    case 'rectangle':
+    case ShapeTypeEnum.RECTANGLE:
       return (
         <Rect
           x={Number(x)}

@@ -12,11 +12,7 @@ import { DefaultLayout } from '~/components/DefaultLayout';
 import '~/styles/globals.css';
 import { trpc } from '~/utils/trpc';
 
-const publicPages = [
-  '/',
-  '/auth/sign-in/[[...index]]',
-  '/auth/sign-up/[[...index]]',
-];
+const publicPages = ['/', '/shapeit'];
 
 export type NextPageWithLayout<
   TProps = AppPropsWithLayout,

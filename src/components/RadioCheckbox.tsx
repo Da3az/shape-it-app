@@ -6,7 +6,7 @@ const RadioCheckbox = ({
   icon,
   onChange,
 }: {
-  id: string;
+  id: any;
   name: string;
   label: string;
   value?: string | number;

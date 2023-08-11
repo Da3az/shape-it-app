@@ -1,6 +1,8 @@
+import { ShapeSizeEnum, ShapeTypeEnum } from '@prisma/client';
+
 export const shapesList = [
   {
-    id: 'star',
+    id: ShapeTypeEnum.STAR,
     label: 'Star',
     name: 'star',
     icon: (
@@ -22,7 +24,7 @@ export const shapesList = [
     ),
   },
   {
-    id: 'circle',
+    id: ShapeTypeEnum.CIRCLE,
     label: 'Circle',
     name: 'circle',
     icon: (
@@ -31,11 +33,11 @@ export const shapesList = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        stroke-width="2"
+        strokeWidth="2"
         stroke="currentColor"
         fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         {' '}
         <path stroke="none" d="M0 0h24v24H0z" />{' '}
@@ -44,7 +46,7 @@ export const shapesList = [
     ),
   },
   {
-    id: 'rectangle',
+    id: ShapeTypeEnum.RECTANGLE,
     label: 'Rectangle',
     name: 'rectangle',
     icon: (
@@ -90,17 +92,17 @@ export const colors = [
 
 export const sizes = [
   {
-    id: 'small',
+    id: ShapeSizeEnum.SMALL,
     label: 'Small',
     name: 'small',
   },
   {
-    id: 'medium',
+    id: ShapeSizeEnum.MEDIUM,
     label: 'Medium',
     name: 'medium',
   },
   {
-    id: 'big',
+    id:  ShapeSizeEnum.BIG,
     label: 'Big',
     name: 'big',
   },

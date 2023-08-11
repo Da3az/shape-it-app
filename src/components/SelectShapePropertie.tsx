@@ -8,7 +8,7 @@ const SelectShapePropertie = ({
   value,
 }: {
   title: string;
-  onChange: (el: string) => void;
+  onChange: (el: any) => void;
   list: {
     id: string;
     label: string;
