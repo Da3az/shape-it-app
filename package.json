@@ -12,7 +12,7 @@
     "dx": "run-p dx:* --print-label",
     "dev": "pnpm dx:next",
     "prebuild": "run-s generate migrate",
-    "build-with-canvas": "yum install libuuid-devel libmount-devel glibc-<2.28> && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && cp /lib64/libc.so.6 node_modules/canvas/build/Release/ && next build",	
+    "build-with-canvas": "yum install libuuid-devel libmount-devel glibc-2.28 && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && cp /lib64/libc.so.6 node_modules/canvas/build/Release/ && next build",	
     "build": "pnpm build-with-canvas",
     "start": "next start",
     "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives --report-unused-disable-directives src",
