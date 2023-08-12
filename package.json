@@ -12,8 +12,7 @@
     "dx": "run-p dx:* --print-label",
     "dev": "pnpm dx:next",
     "prebuild": "run-s generate migrate",
-    "build-for-canvas": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid,libc}.so.6 node_modules/canvas/build/Release/ && next build",	
-    "build": "pnpm build-for-canvas",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives --report-unused-disable-directives src",
     "lint-fix": "pnpm lint --fix",
@@ -23,6 +22,7 @@
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test-dev": "start-server-and-test dev http://127.0.0.1:3000 test",
+    "test-debug": "npx playwright test dev http://127.0.0.1:3000 --debug",
     "test-start": "start-server-and-test start http://127.0.0.1:3000 test",
     "postinstall": "pnpm generate"
   },

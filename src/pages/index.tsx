@@ -20,7 +20,7 @@ const IndexPage: NextPageWithLayout = () => {
             <br />
             You can check what other shaped or you can shape it yourself .
           </h1>
-          <div className=" mt-auto mx-auto ">
+          <div id='goToShapeIt' className=" mt-auto mx-auto ">
             <Link href="/shapeit">
               <Button>Shape it</Button>
             </Link>

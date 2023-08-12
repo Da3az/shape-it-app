@@ -34,7 +34,6 @@ const RemoveShapeButton = ({ onClick }: { onClick: () => void }) => (
 );
 
 export default function PostShapeForm() {
-
   const utils = trpc.useContext();
 
   const onSubmit = (data: any) => {
@@ -59,10 +58,15 @@ export default function PostShapeForm() {
     if (isShapeComplete) {
       setShapes((shapes) => [...shapes, shape as Shape]);
       setShape(undefined);
-      toast.success('Added');
+      toast.success('Added', {
+        className: 'toast-success',
+      });
       return;
     }
-    toast.error('Select all properties for the shape first');
+    toast.error('Select all properties for the shape first', {
+      className: 'toast-error',
+      duration: 10000,
+    });
   };
 
   const { mutateAsync: postShape, isLoading } = trpc.shape.add.useMutation({
@@ -70,7 +74,7 @@ export default function PostShapeForm() {
       setShapes((shapes) => [...shapes, shape as Shape]);
       setShapes([]);
       setShape(undefined);
-      await utils.shape.list.invalidate();
+      await utils.shape.list.refetch();
       toast.success(
         <span>
           Shaped successfully , Check it out{' '}
@@ -78,6 +82,9 @@ export default function PostShapeForm() {
             <b className="text-blue-600 underline">Here</b> , or hit the Logo
           </Link>
         </span>,
+        {
+          className: 'toast-success',
+        },
       );
       return;
     },
@@ -147,7 +154,16 @@ export default function PostShapeForm() {
         <Button onClick={addShape}>Add Shape</Button>
         <Button onClick={() => setIsPreview(true)}>Preview</Button>
         <Button onClick={() => setIsPreview(false)}>List</Button>
-        <Button onClick={() => postShape({ shapes })} buttonColor="red">
+        <Button
+          onClick={() =>
+            shapes.length
+              ? postShape({ shapes })
+              : toast.error('You need to add at least one shape to post it', {
+                  className: 'toast-error',
+                })
+          }
+          buttonColor="red"
+        >
           {isLoading ? <Spinner /> : 'Shape it'}
         </Button>
       </div>
