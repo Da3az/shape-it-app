@@ -9,14 +9,13 @@ const ShapesPool = dynamic(() => import('~/components/ShapesPool'), {
 });
 
 const IndexPage: NextPageWithLayout = () => {
-
   return (
     <div className="flex flex-col  ">
       <div className="relative flex flex-col h-[var(--top-height)] ">
         <div className=" flex flex-col flex-grow justify-center gap-4 p-8">
           <h1 className="text-white text-center text-base sm:text-xl">
-            This is shape.it , built using Nextjs13 , Trpc , Tailwindcss ,
-            Konva , Prisma , .... (tools never end) .
+            This is shape.it , built using Nextjs13 , Trpc , Prisma ,
+            Tailwindcss , Konva .
             <br />
             <br />
             You can check what other shaped or you can shape it yourself .
@@ -27,12 +26,12 @@ const IndexPage: NextPageWithLayout = () => {
             </Link>
           </div>
         </div>
-       
+
         <span className="absolute z-50 top-[100%] left-0  h-24 w-full bg-gradient-to-b from-slate-950 to-transparent" />
       </div>
 
       <div className="overflow-y-scroll h-[calc(100vh-var(--nav-height)-var(--top-height))] bg-slate-950">
-        <ShapesPool  />
+        <ShapesPool />
       </div>
     </div>
   );

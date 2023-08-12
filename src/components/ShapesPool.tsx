@@ -61,7 +61,7 @@ export default function ShapesPool() {
       {shapeQuery.data?.pages?.map((page, index) => (
         <Fragment key={page.items[0]?.id ?? index}>
           {page.items.map((item) => (
-            <div key={item.id} className="relative flex justify-center">
+            <div key={item.id} className="relative flex justify-center mt-6">
               <span className="absolute top-0 left-0 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-2xl mt-4 mb-8 overflow-hidden">
                 {item?.user?.imageUrl ? (
                   <img
