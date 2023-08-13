@@ -1,10 +1,9 @@
 # Prisma + tRPC
 
-This project was started using 
+<img src="githubImg/anime-app.jpg"/>
 
-```bash
-pnpm create next-app --example https://github.com/trpc/trpc --example-path examples/next-prisma-starter trpc-prisma-starter
-```
+Website built using Nextjs13 , Trpc , Prisma , Tailwindcss , Konva .
+
 
 ## Features
 
@@ -26,6 +25,14 @@ pnpm create next-app --example https://github.com/trpc/trpc --example-path examp
 ## Development
 
 ### Start project
+
+- This project was started initially with  
+
+```bash
+pnpm create next-app --example https://github.com/trpc/trpc --example-path examples/next-prisma-starter trpc-prisma-starter
+```
+
+- You run it currently by 
 
 ```bash
 pnpm
