@@ -2,7 +2,7 @@ name: e2e and deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   build:
     services:
@@ -70,7 +70,7 @@ jobs:
     steps:
       - name: Test
         run: pnpm test-start && pnpm test-dev
-        
+
       - name: Upload test results
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
