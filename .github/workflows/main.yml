@@ -8,7 +8,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build-and-test:
     env:
@@ -75,7 +74,7 @@ jobs:
           path: |
             playwright/test-results
   deploy:
-    needs: test
+    needs: build-and-test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
