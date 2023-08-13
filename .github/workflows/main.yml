@@ -87,13 +87,15 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@master
+    - name: Checkout repository
+      uses: actions/checkout@v4
     
-    - name: Publish
-      uses: netlify/actions/cli@master
+    - name: Deploy draft to Netlify
+      uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
-        args: deploy --dir=site --functions=functions
-      env:
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+        build-dir: './build'
+        comment-on-commit: true
 
