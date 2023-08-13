@@ -68,9 +68,9 @@ jobs:
         node: ['18.x']
         os: [ubuntu-latest]
     steps:
-     - name: Test
+      - name: Test
         run: pnpm test-start && pnpm test-dev
-
+        
       - name: Upload test results
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
