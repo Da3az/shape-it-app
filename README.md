@@ -33,7 +33,7 @@ Live on : https://shape-it.netlify.app/ ( Not sure how long it will be live thou
 pnpm create next-app --example https://github.com/trpc/trpc --example-path examples/next-prisma-starter trpc-prisma-starter
 ```
 
-- You run it currently by 
+- start the project by 
 
 ```bash
 pnpm
