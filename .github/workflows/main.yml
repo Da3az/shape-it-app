@@ -7,18 +7,18 @@ on:
   pull_request:
     branches:
       - main
-env:
-  DATABASE_URL: postgresql://postgres:@localhost:5432/next-prisma-starter-new
-  GITHUB_ID: Iv1.bb4a76e72b716c94
-  GITHUB_SECRET: 25976a58430a2d96341038d6995a0d0eb6d42eba
-  JWT_SECRET: secret
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_cHJlY2lvdXMtdGFycG9uLTEzLmNsZXJrLmFjY291bnRzLmRldiQ
-  CLERK_SECRET_KEY: sk_test_4N6Y7uN8ELoXf708qOAgcMvSndEqkq9QEnHgmJCF6R
-  NODE_ENV: test
+
 
 jobs:
-
-  build:
+  build-and-test:
+    env:
+      DATABASE_URL: postgresql://postgres:@localhost:5432/next-prisma-starter-new
+      GITHUB_ID: Iv1.bb4a76e72b716c94
+      GITHUB_SECRET: 25976a58430a2d96341038d6995a0d0eb6d42eba
+      JWT_SECRET: secret
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_cHJlY2lvdXMtdGFycG9uLTEzLmNsZXJrLmFjY291bnRzLmRldiQ
+      CLERK_SECRET_KEY: sk_test_4N6Y7uN8ELoXf708qOAgcMvSndEqkq9QEnHgmJCF6R
+      NODE_ENV: test
     services:
       postgres:
         image: postgres
@@ -64,37 +64,6 @@ jobs:
       - name: Build 
         run: pnpm build 
 
-      - name: Create artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: node_modules   
-
-  test: 
-    needs: build
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_DATABASE: trpcdb
-          POSTGRES_USER: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
-        ports:
-          - 5432:5432
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['18.x']
-        os: [ubuntu-latest]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
-          
       - name: Test
         run: pnpm test-start && pnpm test-dev
 
