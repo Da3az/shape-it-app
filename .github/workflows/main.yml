@@ -2,9 +2,14 @@ name: e2e and deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
-  build:
+
+  build-and-test:
     services:
       postgres:
         image: postgres
@@ -60,14 +65,7 @@ jobs:
 
       - name: Build and test
         run: pnpm build 
-  test: 
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['18.x']
-        os: [ubuntu-latest]
-    steps:
+
       - name: Test
         run: pnpm test-start && pnpm test-dev
 
@@ -78,23 +76,5 @@ jobs:
           name: test results
           path: |
             playwright/test-results
-  deploy:
-    needs: test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['18.x']
-        os: [ubuntu-latest]
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Deploy to Netlify
-      uses: netlify/actions/cli@main
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}  # Create this secret in your repository settings
-        NETLIFY_SITE_ID:  ${{ secrets.NETLIFY_SITE_ID }} # Set your Netlify site ID here
-      with:
-        args: deploy --prod
 
