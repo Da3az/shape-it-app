@@ -4,6 +4,7 @@
 
 Website built using Nextjs13 , Trpc , Prisma , Tailwindcss , Konva .
 
+Live on : https://shape-it.netlify.app/ ( Not sure how long it will be live though )
 
 ## Features
 
