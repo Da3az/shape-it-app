@@ -1,6 +1,6 @@
 # Prisma + tRPC
 
-<img src="githubImg/anime-app.jpg"/>
+<img src="githubImg/img.jpg"/>
 
 Website built using Nextjs13 , Trpc , Prisma , Tailwindcss , Konva .
 
